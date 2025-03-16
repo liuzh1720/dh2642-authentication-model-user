@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/index.jsx"></script>
+    <hr>
+See also <a href="https://play.kth.se/media/Authentication+and+Per-user+Persistence/0_3hybnyag">video</a>.
+TODO: <ol>
+<li> fork this project and set your own firebase config in <code>firebaseConfig.js</code>
+<li>in <code>firebaseModel.js</code>, set <code>model.user</code>. Now you should see a login UI
+<li>pick your login method: Google (web only) or Email/password. Identify the presenter in <code>auth_presenters</code> and its view under <code>views</code>. Logout is common.
+<li>in the presenter custom event handler, call the necessary Firebase authentication functions. See logoutPresenter for an example
+<li> Login will not work yet. Go to <code>Firebase Console / your_Firebase_app/ Authentication/ Settings/ Authorized_domains</code> and add the _domain_ <code>dh2642-authentication-model-user-XXYYZZ.stackblitz.io</code> (check the staclbliz URL)
+<ul><li>or download the stackblitz project as a zip to your machine (localhost is always included in the firebase authorized domains)</ul>
+<li> at this point, the UI above should work, you should be able to sign up (for the email/password method), log in and log out. 
+<li> conditional rendering in the Root component (<code>index.js</code>). Show logout (and later, the app itself) only when <code>model.user</code> is truthy
+<li> error handling in the presenters. Keep the login error in local state or component state (if you want to switch to React, uncomment the React sections in <code>index.jsx</code>). Reset the error before calling a firebase login. Send the error to the view as a prop, for display. See presenters README
+<li> style the login and logout Views and render the login error (for React Native, rewrite Views entirely). See views README.
+<li>when deploying your app/project, do not forget to add the deplpyed app domain in <code>Firebase Console/your Firebase app/Authentication/Settings/Authorized domains</code>
+</ol>
+  </body>
+</html>
